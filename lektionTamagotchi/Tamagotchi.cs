@@ -14,6 +14,7 @@ namespace lektionTamagotchi
 
         public void Feed()
         {
+            Console.WriteLine("NOMNOMNOM!!");
             this.hunger -= 1;
         }
         private void ReduceBoredome()
@@ -22,13 +23,20 @@ namespace lektionTamagotchi
         }
         public void Hi()
         {
-            int number = generator.Next(this.words.Count - 1);
-            Console.WriteLine(this.words[number]);
+            Console.WriteLine("Hej! Kolla vad jag kan säga!");
+            int number = generator.Next(this.words.Count);
+            if (words.Count < 1)
+            {
+                Console.WriteLine("Jag kan inga ord än!");
+            }
+            else
+            {
+                Console.WriteLine(this.words[number]);
+            }
             ReduceBoredome();
         }
         public void Teach(string word)
         {
-            word = Console.ReadLine();
             this.words.Add(word);
             ReduceBoredome();
         }
@@ -44,7 +52,7 @@ namespace lektionTamagotchi
         public void PrintStats()
         {
             Console.WriteLine(name + " har " + this.hunger + " hunger.");
-            Console.WriteLine(name + " är " + this.boredom + "uttråkad.");
+            Console.WriteLine(name + " är " + this.boredom + " uttråkad.");
             if (GetAlive() == true)
             {
                 Console.WriteLine(name + " lever.");
